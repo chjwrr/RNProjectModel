@@ -13,6 +13,7 @@
     "react-native-fs": "^2.9.12", // 下载
     "react-native-image-picker": "^0.26.10", // 图片选择
     "react-native-keyboard-aware-scroll-view": "^0.5.0", // 键盘遮挡输入框
+    "react-native-material-kit": "^0.5.1", // 好看的小组件，使用方法https://github.com/xinthink/rnmk-demo/blob/master/app/toggles.js
     "react-native-side-menu": "^1.1.3", // 侧边栏
     "react-native-sound": "^0.10.9", // 播放声音
     "react-native-swipeout": "^2.3.3", // 滑动删除cell
