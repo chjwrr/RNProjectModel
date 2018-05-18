@@ -9,45 +9,28 @@ import {
     StyleSheet,
     TouchableOpacity
 } from 'react-native'
-
-import Toast from '@remobile/react-native-toast';
-import TimeManager from '../../utils/timeManager';
-import communicationsManager from '../../utils/communicationsManager';
-
+import Color from '../../constance/staticColor';
 
 class home extends Component {
 
     static navigationOptions = {
-        headerTitle: <Text>home</Text>,
+        headerTitle: <Text>主页</Text>,
         headerStyle: {elevation: 0, shadowOpacity: 0} ,// 导航条样式
         headerRight: (
             <View>
                 <Text>home1</Text>
-                <Text>home2</Text>
             </View>
-        )}
+        )
+    };
 
     constructor(props){
         super(props)
 
     }
 
-    componentDidMount() {
-        console.log(TimeManager.getTimeDetailInfo(1526461800));
-        console.log(TimeManager.formatterTime(1526461800,'YYYY-MM-DD hh:mm'));
-
-
-    }
 
     render() {
         return <View style={styles.container}>
-            <TouchableOpacity onPress={()=>{
-                Toast.showShortCenter('toast')
-
-            }}>
-                <Text>Toast</Text>
-            </TouchableOpacity>
-
 
         </View>
     }
@@ -55,7 +38,7 @@ class home extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#F5FCFF',
+        backgroundColor: Color.PAGE_BG_COLOR
     },
 });
 

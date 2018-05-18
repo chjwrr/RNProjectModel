@@ -12,19 +12,7 @@ import {
 
 import PropTypes from 'prop-types';
 
-
-import HomeIconImg from '../../asset/tabbar/home_icon.png';
-import HomeIconSelectImg from '../../asset/tabbar/home_icon_select.png';
-
-import ContactIconImg from '../../asset/tabbar/contact-icon.png';
-import ContactIconSelectImg from '../../asset/tabbar/contact-icon_select.png';
-
-import MomentIconImg from '../../asset/tabbar/moment_icon.png';
-import MomentIconSelectImg from '../../asset/tabbar/moment_icon_select.png';
-
-import MineIconImg from '../../asset/tabbar/mine_icon.png';
-import MineIconSelectImg from '../../asset/tabbar/mine_icon_select.png';
-
+import Color from '../../constance/staticColor';
 
 type Props = {};
 export default class tabbarIcon extends Component<Props> {
@@ -32,22 +20,27 @@ export default class tabbarIcon extends Component<Props> {
     render() {
 
         let subView;
+        const styleColor = {color: this.props.focused ? Color.TABBAR_SELECT_COLOR : Color.TABBAR_NORMAL_COLOR};
         switch (this.props.type) {
             case 'home':
-                subView = <Image source={this.props.focused ? HomeIconSelectImg : HomeIconImg} />;
-
+                subView = <Text style={[styles.text, styleColor]}>
+                    &#xe64e;
+                </Text>;
                 break;
             case 'contact':
-                subView = <Image source={this.props.focused ? ContactIconSelectImg : ContactIconImg} />;
-
+                subView = <Text style={[styles.text, styleColor]}>
+                    &#xe60e;
+                </Text>;
                 break;
             case 'moment':
-                subView = <Image source={this.props.focused ? MomentIconSelectImg : MomentIconImg} />;
-
+                subView = <Text style={[styles.text, styleColor]}>
+                    &#xe724;
+                </Text>;
                 break;
             case 'mine':
-                subView = <Image source={this.props.focused ? MineIconSelectImg : MineIconImg} />;
-
+                subView = <Text style={[styles.text, styleColor]}>
+                    &#xe60c;
+                </Text>;
                 break;
             default:
                 break;
@@ -61,6 +54,12 @@ export default class tabbarIcon extends Component<Props> {
         );
     }
 };
+const styles = StyleSheet.create({
+    text:{
+        fontFamily: 'iconfont',
+        fontSize: 25
+    }
+});
 tabbarIcon.propTypes = {
     focused: PropTypes.bool.isRequired,
     type: PropTypes.string.isRequired

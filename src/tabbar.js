@@ -10,10 +10,7 @@ import MomentPage from './pages/tabbarPage/moments'
 import MinePage from './pages/tabbarPage/mine'
 
 import TabbarIcon from './comment/tabbar/tabbarIcon';
-
-
-const tintColor = '#2c2c2c';
-const sTintColor = '#1296db';
+import Color from './constance/staticColor';
 
 const AppRootTabBarRouteConfigs = {
     Home: {
@@ -77,8 +74,8 @@ const AppRootTabBarNavigatorConfigs = {
     tabBarPosition: 'bottom',
     lazy: true, //是否懒加载 == 是否同时加载tabbar对应的page
     tabBarOptions: {
-        activeTintColor: sTintColor, // 选中的颜色
-        inactiveTintColor: tintColor, // 未选中的颜色
+        activeTintColor: Color.TABBAR_SELECT_COLOR, // 选中的颜色
+        inactiveTintColor: Color.TABBAR_NORMAL_COLOR, // 未选中的颜色
         //showLabel: true, // 是否显示title，自定义tabbarItem时需设置false
         style: {
             backgroundColor: '#f5f5f5'

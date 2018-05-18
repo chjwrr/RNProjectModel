@@ -9,11 +9,12 @@ import {
     TouchableOpacity,
 } from 'react-native'
 import { connect } from 'react-redux'
+import Color from '../../constance/staticColor';
 
 class moments extends Component {
 
     static navigationOptions = {
-        headerTitle: '多图浏览',
+        headerTitle: '朋友圈',
         headerRight: (
             <TouchableOpacity style={{marginRight: 10}}>
                 <Text>发布</Text>
@@ -35,7 +36,7 @@ class moments extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#F5FCFF',
+        backgroundColor: Color.PAGE_BG_COLOR
     },
 
 });

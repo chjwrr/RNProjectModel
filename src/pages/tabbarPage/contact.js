@@ -10,10 +10,8 @@ import {
     StyleSheet,
     TouchableOpacity
 } from 'react-native'
-import {
-    ACTION_DELAY_HTTP_REQUEST_PROMISE,
-    ACTION_DELAY_HTTP_REQUEST_PROMISE_MIDDLEWARE
-} from '../../action/action'
+import Color from '../../constance/staticColor';
+
 class contact extends Component {
 
     static navigationOptions = {
@@ -32,19 +30,7 @@ class contact extends Component {
     };
     render() {
         return <View style={styles.container}>
-            <TouchableOpacity style={styles.button} onPress={()=>{
-                this.props.dispatchPromise('url');
-            }}>
-                <Text style={styles.buttonText}>dispatch 一个 promise</Text>
-            </TouchableOpacity>
-            <Text>{this.props.result}</Text>
 
-            <TouchableOpacity style={styles.button} onPress={()=>{
-                this.props.dispatchPromiseMiddleware('url');
-            }}>
-                <Text style={styles.buttonText}>dispatch 一个 promise-middleware</Text>
-            </TouchableOpacity>
-            <Text>{this.props.middlewareResult}</Text>
 
         </View>
     }
@@ -52,7 +38,7 @@ class contact extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#F5FCFF',
+        backgroundColor: Color.PAGE_BG_COLOR
     },
     button: {
         marginHorizontal: 10,
@@ -70,18 +56,11 @@ const styles = StyleSheet.create({
 });
 function mapStateToProps(state) {
     return {
-        result: state.contactRedux.result,
-        middlewareResult: state.contactRedux.middlewareResult,
     }
 }
 function mapDispatchToProps(dispatch) {
     return {
-        dispatchPromise:(url)=>{
-            dispatch(ACTION_DELAY_HTTP_REQUEST_PROMISE(url))
-        },
-        dispatchPromiseMiddleware:(url)=>{
-            dispatch(ACTION_DELAY_HTTP_REQUEST_PROMISE_MIDDLEWARE(url))
-        }
+
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(contact)

@@ -9,6 +9,7 @@ import {
     TouchableOpacity
 } from 'react-native'
 import { connect } from 'react-redux'
+import Color from '../../constance/staticColor';
 
 
 class mine extends Component {
@@ -31,7 +32,7 @@ class mine extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#F5FCFF',
+        backgroundColor: Color.PAGE_BG_COLOR
     }
 });
 
