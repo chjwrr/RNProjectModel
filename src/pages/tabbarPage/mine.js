@@ -10,6 +10,8 @@ import {
 } from 'react-native'
 import { connect } from 'react-redux'
 import Color from '../../constance/staticColor';
+import PureRenderMixin from 'react-addons-pure-render-mixin';
+import Immutable from 'immutable';
 
 
 class mine extends Component {
@@ -23,6 +25,13 @@ class mine extends Component {
         ),
         headerStyle: {elevation: 0, shadowOpacity: 0} // 导航条样式
     };
+
+    constructor(props){
+        super(props)
+        this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
+
+    }
+
     render() {
         return <View style={styles.container}>
 

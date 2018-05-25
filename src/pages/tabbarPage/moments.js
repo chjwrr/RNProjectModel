@@ -10,6 +10,8 @@ import {
 } from 'react-native'
 import { connect } from 'react-redux'
 import Color from '../../constance/staticColor';
+import PureRenderMixin from 'react-addons-pure-render-mixin';
+import Immutable from 'immutable';
 
 class moments extends Component {
 
@@ -24,10 +26,10 @@ class moments extends Component {
     };
 
     constructor(props){
-        super(props);
+        super(props)
+        this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
 
     }
-
     render() {
         return <View style={styles.container} >
         </View>

@@ -10,6 +10,8 @@ import {
     TouchableOpacity
 } from 'react-native'
 import Color from '../../constance/staticColor';
+import PureRenderMixin from 'react-addons-pure-render-mixin';
+import Immutable from 'immutable';
 
 class home extends Component {
 
@@ -25,12 +27,14 @@ class home extends Component {
 
     constructor(props){
         super(props)
+        this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
 
     }
 
 
     render() {
         return <View style={styles.container}>
+            <Text>{this.props.abc}</Text>
         </View>
     }
 }
@@ -44,6 +48,7 @@ const styles = StyleSheet.create({
 
 function mapStateToProps(state) {
     return {
+        abc: state.getIn(['homeRedux','abc'])
     }
 }
 function mapDispatchToProps(dispatch) {

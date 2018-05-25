@@ -11,9 +11,14 @@ import {
 } from 'react-native';
 
 import PropTypes from 'prop-types';
+import PureRenderMixin from 'react-addons-pure-render-mixin';
+import Immutable from 'immutable';
 
 export default class common extends Component<{}> {
-
+    constructor(props){
+        super(props);
+        this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
+    }
     render() {
         return (
             <View style={styles.container}>

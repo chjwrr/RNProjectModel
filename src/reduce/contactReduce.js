@@ -3,11 +3,15 @@
  */
 import * as Action from '../constance/actionType';
 
-const initState = {
-};
+import Immutable from 'immutable'
+
+const initState = Immutable.fromJS({
+
+});
 
 export default (state = initState, action)=>{
     switch (action.type){
+
 
         default:
             return state;

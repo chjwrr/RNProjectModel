@@ -2,7 +2,11 @@
  * Created by chj on 2018/4/17.
  */
 
-import {combineReducers} from 'redux'
+// 原本方式，reducer 里面处理的是原生的js
+// import {combineReducers} from 'redux'
+
+// reducer 处理的是 immutable 格式的数据
+import { combineReducers } from 'redux-immutable'
 
 import homeRedux from './homeReduce'
 import contactRedux from './contactReduce'

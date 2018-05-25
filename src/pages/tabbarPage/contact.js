@@ -11,6 +11,8 @@ import {
     TouchableOpacity
 } from 'react-native'
 import Color from '../../constance/staticColor';
+import PureRenderMixin from 'react-addons-pure-render-mixin';
+import Immutable from 'immutable';
 
 class contact extends Component {
 
@@ -18,7 +20,8 @@ class contact extends Component {
         headerTitle: '通讯录',
         headerLeft: (
             <View style={{flexDirection: 'row'}}>
-                <TouchableOpacity style={{marginLeft: 10}}>
+                <TouchableOpacity style={{marginLeft: 10}} onPress={()=>{
+                }}>
                     <Text>添加</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={{marginLeft: 10}}>
@@ -28,9 +31,19 @@ class contact extends Component {
         ),
         headerStyle: {elevation: 0, shadowOpacity: 0} // 导航条样式
     };
+
+    constructor(props){
+        super(props)
+        this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
+
+    }
+
     render() {
         return <View style={styles.container}>
-
+            <TouchableOpacity style={{marginLeft: 10}} onPress={()=>{
+            }}>
+                <Text>添加</Text>
+            </TouchableOpacity>
 
         </View>
     }
@@ -60,7 +73,6 @@ function mapStateToProps(state) {
 }
 function mapDispatchToProps(dispatch) {
     return {
-
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(contact)

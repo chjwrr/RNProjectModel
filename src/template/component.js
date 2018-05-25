@@ -11,11 +11,14 @@ import {
 } from 'react-native';
 import {connect} from 'react-redux';
 
+import PureRenderMixin from 'react-addons-pure-render-mixin';
+import Immutable from 'immutable';
 
 class component extends Component<{}> {
 
     constructor(props){
         super(props);
+        this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
     }
 
     render() {
