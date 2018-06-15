@@ -36,7 +36,7 @@ export default store => next => action => {
         complete
     } = action.payload;
 
-    loading();
+    if (loading) loading();
 
     // 设置url
     axios.defaults.baseURL = 'https://api.example.com';
@@ -80,18 +80,11 @@ export default store => next => action => {
             console.log('downloadEvent:', downloadEvent);
         }
     }).then(response =>{
-        success(response);
+        if (success) success(response);
     }).catch(error =>{
-        fail(error);
+        if (fail) fail(error);
     }).finally(()=>{
-        complete();
+        if (complete) complete();
     })
-
-
-
-
-
-
-
 
 }
