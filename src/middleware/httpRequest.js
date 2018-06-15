@@ -28,7 +28,7 @@ export default store => next => action => {
 
     const {
         url,
-        method = 'POST', // 如果没有传，则默认是 POST 方式
+        method = 'post', // 如果没有传，则默认是 POST 方式
         params = {}, // 默认 空
         loading,
         success,
@@ -39,13 +39,14 @@ export default store => next => action => {
     if (loading) loading();
 
     // 设置url
-    axios.defaults.baseURL = 'https://api.example.com';
+    // axios.defaults.baseURL = 'https://api.example.com';
 
     // 设置默认的header
     //axios.defaults.headers.DeviceId = ''
 
     // 设置数据类型
-    //axios.defaults.headers.post['Content-Type'] = 'application/json';
+    axios.defaults.headers.post['Content-Type'] = 'application/json';
+    // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 
     // 添加请求拦截器
     axios.interceptors.request.use(function (config) {
@@ -65,12 +66,11 @@ export default store => next => action => {
         return Promise.reject(error);
     });
 
-    // 发送请求
     axios({
+        method: method.toLowerCase(),
         url: url,
-        method: method,
         headers: headers,
-        data: params,
+        data: method.toLowerCase() === 'get' ? null : params,
         timeout: timeout,
         responseType: 'json',
         onUploadProgress: (progressEvent)=>{
@@ -79,12 +79,16 @@ export default store => next => action => {
         onDownloadProgress: (downloadEvent)=>{
             console.log('downloadEvent:', downloadEvent);
         }
-    }).then(response =>{
-        if (success) success(response);
-    }).catch(error =>{
-        if (fail) fail(error);
-    }).finally(()=>{
-        if (complete) complete();
     })
+        .then(function (response) {
+            if (success) success(response.data);
+        })
+        .catch(function (error) {
+            if (fail) fail(error);
+            console.log('error',error);
+        })
+        .finally(()=>{
+            if (complete) complete();
+        })
 
 }
